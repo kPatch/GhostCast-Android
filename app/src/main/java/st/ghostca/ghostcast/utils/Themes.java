@@ -15,7 +15,7 @@ import st.ghostca.ghostcast.R;
 import st.ghostca.ghostcast.custom.CustomActivity;
 
 /**
- *  Created by irvin on 10/26/2014.
+ * Created by irvin on 10/26/2014.
  * The Class Theme is the activity class that is launched when user tapes on Themes button in Settings screen.
  * This activity allows the user to select the for app.
  */
@@ -39,6 +39,16 @@ public class Themes extends CustomActivity
      */
     private void initViewComponents()
     {
+        setTouchNClick(R.id.themeRadicalRed);
+        setTouchNClick(R.id.themeRed);
+        setTouchNClick(R.id.themeHiccup);
+        setTouchNClick(R.id.themeHiccup1);
+        setTouchNClick(R.id.themeHiccup2);
+        setTouchNClick(R.id.themeHiccup3);
+        setTouchNClick(R.id.themeHiccup4);
+        setTouchNClick(R.id.themeDark);
+
+
         setTouchNClick(R.id.themeBlue);
         setTouchNClick(R.id.themeGreen);
         setTouchNClick(R.id.themeRed);

@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 
 import st.ghostca.ghostcast.R;
+import st.ghostca.ghostcast.utils.TouchEffect;
 
 
 /**
@@ -69,7 +70,7 @@ public class CustomActivity extends FragmentActivity implements OnClickListener
      * Apply this Constant as touch listener for views to provide alpha touch
      * effect. The view must have a Non-Transparent background.
      */
-    //public static final TouchEffect TOUCH = new TouchEffect();
+    public static final TouchEffect TOUCH = new TouchEffect();
 
     /* (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -160,7 +161,7 @@ public class CustomActivity extends FragmentActivity implements OnClickListener
     {
 
         View v = setClick(id);
-        //v.setOnTouchListener(TOUCH);
+        v.setOnTouchListener(TOUCH);
         return v;
     }
 

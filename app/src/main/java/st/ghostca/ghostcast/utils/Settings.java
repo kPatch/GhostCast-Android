@@ -27,8 +27,8 @@ import st.ghostca.ghostcast.custom.CustomActivity;
  */
 public class Settings extends CustomActivity
 {
-
-    /** The list of Setting items. */
+/*
+    *//** The list of Setting items. *//*
     private ArrayList<Data> sList;
 
     @Override
@@ -40,10 +40,10 @@ public class Settings extends CustomActivity
         initViewComponents();
     }
 
-    /**
+    *//**
      * This method initialize the view components, assign OnClick, OnTouch and
      * other required listeners on views.
-     */
+     *//*
     private void initViewComponents()
     {
         ListView list = (ListView) findViewById(R.id.list);
@@ -83,9 +83,9 @@ public class Settings extends CustomActivity
             startActivity(new Intent(this, Themes.class));
     }
 
-    /* (non-Javadoc)
+    *//* (non-Javadoc)
      * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
-     */
+     *//*
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -103,13 +103,13 @@ public class Settings extends CustomActivity
         return super.onOptionsItemSelected(item);
     }
 
-    /**
+    *//**
      * Gets the setting item. The current implementation create a dummy list of
      * Setting items. A Non-null value for description means that the
      * corresponding setting item will be marked as selected. You can write your
      * code to load the actual Setting items.
      *
-     */
+     *//*
     private void getSettings()
     {
         sList = new ArrayList<Data>();
@@ -120,43 +120,43 @@ public class Settings extends CustomActivity
         sList.add(new Data("Info", null, 0));
     }
 
-    /**
+    *//**
      * The Class SettingAdapter is the Adapter class for List of Setting items.
      * You can write your own logic related to List item display.
-     */
+     *//*
     private class SettingAdapter extends BaseAdapter
     {
 
-        /* (non-Javadoc)
+        *//* (non-Javadoc)
          * @see android.widget.Adapter#getCount()
-         */
+         *//*
         @Override
         public int getCount()
         {
             return sList.size();
         }
 
-        /* (non-Javadoc)
+        *//* (non-Javadoc)
          * @see android.widget.Adapter#getItem(int)
-         */
+         *//*
         @Override
         public Data getItem(int arg0)
         {
             return sList.get(arg0);
         }
 
-        /* (non-Javadoc)
+        *//* (non-Javadoc)
          * @see android.widget.Adapter#getItemId(int)
-         */
+         *//*
         @Override
         public long getItemId(int arg0)
         {
             return 0;
         }
 
-        /* (non-Javadoc)
+        *//* (non-Javadoc)
          * @see android.widget.Adapter#getView(int, android.view.View, android.view.ViewGroup)
-         */
+         *//*
         @Override
         public View getView(int position, View convertView, ViewGroup parent)
         {
@@ -173,5 +173,5 @@ public class Settings extends CustomActivity
             return lbl;
         }
 
-    }
+    }*/
 }
