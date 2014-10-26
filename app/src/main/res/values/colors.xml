@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Basic Colors -->
+    <color name="clean_white">#FFFFFF</color>
+
+    <!-- Theme Colors   Theme Colors   Theme Colors   Theme Colors  -->
+
+    <!-- Flat -->
+    <color name="theme_red_flat">#ff216a</color>
+    <drawable name="theme_red_flat">#ff216a</drawable>
+
+    <color name="theme_yellow_flat">#f3d73d</color>
+    <drawable name="theme_yellow_flat">#f3d73d</drawable>
+    <color name="theme_green_flat">#49c419</color>
+    <drawable name="theme_green_flat">#49c419</drawable>
+    <color name="theme_blue_flat">#2194ff</color>
+    <drawable name="theme_blue_flat">#2194ff</drawable>
+
+    <!-- http://www.flatuicolorpicker.com/ -->
+
+    <!-- Bubble Gum -->
+    <color name="theme_radical_red">#f62459</color>
+    <drawable name="theme_radical_red">#f62459</drawable>
+
+    <!-- Hiccup -->
+    <color name="theme_hiccup">#59ABE3</color>
+    <drawable name="theme_hiccup">#59ABE3</drawable>
+    <color name="theme_hiccup1">#3498DB</color>
+    <drawable name="theme_hiccup1">#3498DB</drawable>
+    <color name="theme_hiccup2">#22A7F0</color>
+    <drawable name="theme_hiccup2">#22A7F0</drawable>
+    <color name="theme_hiccup3">#81CFE0</color>
+    <drawable name="theme_hiccup3">#81CFE0</drawable>
+    <color name="theme_hiccup4">#52B3D9</color>
+    <drawable name="theme_hiccup4">#52B3D9</drawable>
+
+    <!-- Dark -->
+
+    <color name="theme_dark">#2C3E50</color>
+    <drawable name="theme_dark">#2C3E50</drawable>
+
+
+    <!-- Feed Item -->
+    <color name="white">#ffffff</color>
+    <color name="feed_bg">#d3d6db</color>
+    <color name="feed_item_bg">#ffffff</color>
+    <color name="feed_item_border">#c2c3c8</color>
+    <color name="link">#0a80d1</color>
+    <color name="timestamp">#a0a3a7</color>
+
+
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_red_flat">
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:text="Bubble"
+    android:textSize="@dimen/header1"
+    android:textStyle="bold"
+    android:id="@+id/bubble"
+    android:textColor="@color/clean_white"
+    android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/gum"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Gum"
+        android:textSize="@dimen/header1"
+        android:textStyle="bold"
+        android:id="@+id/gum"
+        android:textColor="@color/clean_white"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

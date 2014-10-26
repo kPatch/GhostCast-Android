@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="1dp">
+
+    <Button
+        android:id="@+id/themeRed"
+        style="@style/them_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_radical_red"
+        android:text="RED RADICAL" />
+
+    <Button
+        android:id="@+id/themeRadicalRed"
+        style="@style/them_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_red_flat"
+        android:text="RED FLAT" />
+
+    <Button
+        android:id="@+id/themeHiccup"
+        style="@style/them_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_hiccup"
+        android:text="HICCUP" />
+
+    <Button
+        android:id="@+id/themeHiccup1"
+        style="@style/them_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_hiccup1"
+        android:text="HICCUP 1" />
+
+    <Button
+        android:id="@+id/themeHiccup2"
+        style="@style/them_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_hiccup2"
+        android:text="HICCUP 2" />
+    <Button
+        android:id="@+id/themeHiccup3"
+        style="@style/them_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_hiccup3"
+        android:text="HICCUP 3" />
+
+    <Button
+        android:id="@+id/themeHiccup4"
+        style="@style/them_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_hiccup4"
+        android:text="HICCUP 4" />
+
+    <Button
+        android:id="@+id/themeDark"
+        style="@style/them_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_dark"
+        android:text="DARK" />
+
+    <Button
+        android:id="@+id/themeGreen"
+        style="@style/them_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_green_flat"
+        android:text="GREEN FLAT" />
+
+    <Button
+        android:id="@+id/themeBlue"
+        style="@style/them_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_blue_flat"
+        android:text="BLUE FLAT" />
+
+    <Button
+        android:id="@+id/themeYellow"
+        style="@style/them_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_yellow_flat"
+        android:text="YELLOW FLAT" />
+
+</LinearLayout>
