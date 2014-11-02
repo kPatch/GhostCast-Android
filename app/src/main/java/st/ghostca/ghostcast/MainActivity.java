@@ -2,6 +2,7 @@ package st.ghostca.ghostcast;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.hardware.Camera;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import st.ghostca.ghostcast.camera.CameraActivity;
+import st.ghostca.ghostcast.camera.CameraPreview;
 import st.ghostca.ghostcast.utils.Themes;
 
 
@@ -35,6 +38,15 @@ public class MainActivity extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+
+    /**
+     * Camera
+     */
+    private Camera mCamera;
+    private CameraPreview mPreview;
+    private static String TAG = "CAMERA_ACTIVITY";
+    public static final int MEDIA_TYPE_IMAGE = 1;
+    public static final int MEDIA_TYPE_VIDEO = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,7 +153,8 @@ public class MainActivity extends ActionBarActivity
             click.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(getActivity(), Themes.class));
+                    //startActivity(new Intent(getActivity(), Themes.class));
+                    startActivity(new Intent(getActivity(), CameraActivity.class));
                 }
             });
 

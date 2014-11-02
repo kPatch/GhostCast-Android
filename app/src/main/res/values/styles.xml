@@ -16,4 +16,36 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <!-- Camera Styles -->
+
+<!--    <style name="custom_switch" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:thumb">@drawable/switch_thumb</item>
+        <item name="android:track">@drawable/switch_bg</item>
+    </style>-->
+    <style name="lbl_slide" parent="android:Widget.Holo.Light.TextView">
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:minWidth">50dp</item>
+        <item name="android:textColor">@color/gray_light</item>
+    </style>
+    <style name="tab_btn" parent="android:Widget.Holo.Light.TextView">
+        <item name="android:background">@drawable/btn_tab</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="divider_blue">
+        <item name="android:background">@color/blue_dark</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+    </style>
+    <style name="lbl_setting" parent="android:Widget.Holo.Light.TextView">
+        <item name="android:background">@color/gray_very_light</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:textColor">@color/gray_dk</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

@@ -50,4 +50,14 @@
     <color name="timestamp">#a0a3a7</color>
 
 
+    <!-- Camera Colors -->
+    <color name="red_light">#e74c3c</color>
+    <color name="gray_dk">#313031</color>
+    <color name="white_smoke">#F7F7F7</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="blue_sky">#33b5e5</color>
+    <color name="blue_dark">#003b71</color>
+    <color name="gray_light">#808080</color>
+    <color name="gray_very_light">#e5e5e5</color>
 </resources>
