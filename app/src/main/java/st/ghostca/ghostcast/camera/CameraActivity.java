@@ -2,6 +2,8 @@ package st.ghostca.ghostcast.camera;
 
 import android.app.Activity;
 import android.hardware.Camera;
+import android.media.CamcorderProfile;
+import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -26,6 +28,7 @@ public class CameraActivity extends Activity {
 
     private Camera mCamera;
     private CameraPreview mPreview;
+    private MediaRecorder mMediaRecorder;
     private static String TAG = "CAMERA_ACTIVITY";
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
@@ -156,5 +159,59 @@ public class CameraActivity extends Activity {
             // Camera is not available (in use or does not exist)
         }
         return c; // returns null if camera is unavailable
+    }
+
+    /**
+     * Setting a profile to record video without sound
+     * @return true if the settings were properly set.
+     */
+    private boolean prepareVideoRecorder() {
+
+        mCamera = getCameraInstance();
+        mMediaRecorder = new MediaRecorder();
+
+        // store the quality profile required
+        //CamcorderProfile profile = CamcorderProfile.get(Camera.getNumberOfCameras()-2, CamcorderProfile.QUALITY_HIGH);
+        // Let's first try with the CAMERA_FACING_BACK
+        CamcorderProfile profile = CamcorderProfile.get(Camera.CameraInfo.CAMERA_FACING_BACK, CamcorderProfile.QUALITY_HIGH);
+
+        // Step 1: Unlock and set camera to MediaRecorder
+        mCamera.unlock();
+        mMediaRecorder.setCamera(mCamera);
+
+        // Step 2: Set sources
+        mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+
+        // Step 3: Set all values contained in profile except audio settings
+        mMediaRecorder.setOutputFormat(profile.fileFormat);
+        mMediaRecorder.setVideoEncoder(profile.videoCodec);
+        mMediaRecorder.setVideoEncodingBitRate(profile.videoBitRate);
+        mMediaRecorder.setVideoFrameRate(profile.videoFrameRate);
+        mMediaRecorder.setVideoSize(profile.videoFrameWidth, profile.videoFrameHeight);
+
+        // Step 4: Set output file
+        mMediaRecorder.setOutputFile(getOutputMediaFile(MEDIA_TYPE_VIDEO).toString());
+
+        // Step 5: Set the preview output
+        mMediaRecorder.setPreviewDisplay(mPreview.getHolder().getSurface());
+
+        // Step 6: Prepare configured MediaRecorder
+        try {
+            mMediaRecorder.prepare();
+        } catch (IllegalStateException e) {
+            releaseMediaRecorder();
+            return false;
+        } catch (IOException e) {
+            releaseMediaRecorder();
+            return false;
+        }
+        return true;
+    }
+
+    private void releaseMediaRecorder(){
+        if (mMediaRecorder != null){
+            mMediaRecorder.release();        // release the camera for other applications
+            mMediaRecorder = null;
+        }
     }
 }
