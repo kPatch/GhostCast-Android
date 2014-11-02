@@ -210,7 +210,7 @@ public class CameraActivity extends Activity {
 
     private void releaseMediaRecorder(){
         if (mMediaRecorder != null){
-            mMediaRecorder.release();        // release the camera for other applications
+            mMediaRecorder.release();        // release the mMediaRecorder for other applications
             mMediaRecorder = null;
         }
     }
