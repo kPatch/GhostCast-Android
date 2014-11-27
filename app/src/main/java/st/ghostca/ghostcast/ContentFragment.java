@@ -59,7 +59,7 @@ public class ContentFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+/*
         Bundle args = getArguments();
 
         if (args != null) {
@@ -75,6 +75,6 @@ public class ContentFragment extends Fragment {
             TextView dividerColorView = (TextView) view.findViewById(R.id.item_divider_color);
             dividerColorView.setText("Divider: #" + Integer.toHexString(dividerColor));
             dividerColorView.setTextColor(dividerColor);
-        }
+        }*/
     }
 }

@@ -17,6 +17,7 @@
 package st.ghostca.ghostcast;
 
 import st.ghostca.ghostcast.common.view.SlidingTabLayout;
+import st.ghostca.ghostcast.fragments.FeedFragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -27,7 +28,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +58,7 @@ public class SlidingTabsColorsFragment extends Fragment {
          */
         Fragment createFragment() {
             return ContentFragment.newInstance(mTitle, mIndicatorColor, mDividerColor);
+            //return FeedFragment.newInstance(mTitle.toString(), "");
         }
 
         /**
@@ -225,7 +226,12 @@ public class SlidingTabsColorsFragment extends Fragment {
          */
         @Override
         public Fragment getItem(int i) {
-            return mTabs.get(i).createFragment();
+            switch(i) {
+                case 0: return FeedFragment.newInstance("Feed", "");
+                //case 0: return mTabs.get(i).createFragment();
+                default: return mTabs.get(i).createFragment();
+            }
+            //return mTabs.get(i).createFragment();
         }
 
         @Override

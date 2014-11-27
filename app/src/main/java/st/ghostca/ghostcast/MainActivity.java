@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 import android.widget.ViewAnimator;
 
 import st.ghostca.ghostcast.common.activities.SampleActivityBase;
@@ -27,6 +28,7 @@ import st.ghostca.ghostcast.common.logger.Log;
 import st.ghostca.ghostcast.common.logger.LogFragment;
 import st.ghostca.ghostcast.common.logger.LogWrapper;
 import st.ghostca.ghostcast.common.logger.MessageOnlyLogFilter;
+import st.ghostca.ghostcast.fragments.FeedFragment;
 
 /**
  * A simple launcher activity containing a summary sample description, sample log and a custom
@@ -35,7 +37,7 @@ import st.ghostca.ghostcast.common.logger.MessageOnlyLogFilter;
  * For devices with displays with a width of 720dp or greater, the sample log is always visible,
  * on other devices it's visibility is controlled by an item on the Action Bar.
  */
-public class MainActivity extends SampleActivityBase {
+public class MainActivity extends SampleActivityBase implements FeedFragment.OnFragmentInteractionListener {
 
     public static final String TAG = "MainActivity";
 
@@ -105,5 +107,9 @@ public class MainActivity extends SampleActivityBase {
         msgFilter.setNext(logFragment.getLogView());
 
         Log.i(TAG, "Ready");
+    }
+
+    public void onFragmentInteraction(String id){
+        Toast.makeText(getApplicationContext(), "ID: " + id, Toast.LENGTH_SHORT);
     }
 }
