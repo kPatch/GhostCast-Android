@@ -7,6 +7,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.parse.Parse;
+import com.parse.ParseObject;
 
 import st.ghostca.ghostcast.LruBitmapCache;
 import st.ghostca.ghostcast.common.logger.Log;
