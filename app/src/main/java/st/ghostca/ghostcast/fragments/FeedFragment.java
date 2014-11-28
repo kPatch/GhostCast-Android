@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.android.volley.Cache;
@@ -48,8 +46,6 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
 
     private static final String TAG = "FEED FRAGMENT";
     private String URL_FEED = "http://api.androidhive.info/feed/feed.json";
-
-
     private List<FeedItem> feedItems;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -100,9 +96,6 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
-
         // TODO: Change Adapter to display your content
         //mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
         //        android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
@@ -115,47 +108,6 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
 
         // Set OnItemClickListener so we can be notified on item clicks
         //mListView.setOnItemClickListener(this);
-
-        // We first check for cached request
-/*        Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(URL_FEED);
-        if (entry != null) {
-            // fetch the data from cache
-            try {
-                String data = new String(entry.data, "UTF-8");
-                try {
-                    parseJsonFeed(new JSONObject(data));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-
-        } else {
-            // making fresh volley request and getting json
-            JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
-                    URL_FEED, null, new Response.Listener<JSONObject>() {
-
-                @Override
-                public void onResponse(JSONObject response) {
-                    VolleyLog.d(TAG, "Response: " + response.toString());
-                    if (response != null) {
-                        parseJsonFeed(response);
-                    }
-                }
-            }, new Response.ErrorListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    VolleyLog.d(TAG, "Error: " + error.getMessage());
-                }
-            });
-
-            // Adding request to volley request queue
-            AppController.getInstance().addToRequestQueue(jsonReq);
-        }*/
-
         return view;
     }
 
@@ -184,7 +136,6 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-
         } else {
             // making fresh volley request and getting json
             JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
@@ -198,13 +149,11 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
                     }
                 }
             }, new Response.ErrorListener() {
-
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     VolleyLog.d(TAG, "Error: " + error.getMessage());
                 }
             });
-
             // Adding request to volley request queue
             AppController.getInstance().addToRequestQueue(jsonReq);
         }
@@ -227,13 +176,13 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
         mListener = null;
     }
 
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
+            //mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
+            mListener.onFeedFragmentInteraction(feedItems.get(position).getTimeStamp());
         }
     }
 
@@ -250,22 +199,18 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
         }
     }
 
-
-
     /**
      * Parsing json reponse and passing the data to feed view list adapter
      * */
     private void parseJsonFeed(JSONObject response) {
         try {
             JSONArray feedArray = response.getJSONArray("feed");
-
             for (int i = 0; i < feedArray.length(); i++) {
                 JSONObject feedObj = (JSONObject) feedArray.get(i);
 
                 FeedItem item = new FeedItem();
                 item.setId(feedObj.getInt("id"));
                 item.setName(feedObj.getString("name"));
-
                 // Image might be null sometimes
                 String image = feedObj.isNull("image") ? null : feedObj
                         .getString("image");
@@ -278,7 +223,6 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
                 String feedUrl = feedObj.isNull("url") ? null : feedObj
                         .getString("url");
                 item.setUrl(feedUrl);
-
                 feedItems.add(item);
             }
 
@@ -302,7 +246,7 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(String id);
+        public void onFeedFragmentInteraction(String id);
     }
 
 }

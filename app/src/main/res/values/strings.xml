@@ -15,8 +15,6 @@
     <string name="grp_temp">\@JayL, @damen.miller, @steve.buscemi, @ris.collins, @peterk</string>
     <string name="title_activity_login">Login</string>
     <string name="hello_world">Hello world!</string>
-
-
     <string name="tab_stream">Stream</string>
     <string name="tab_messages">MessaLges</string>
     <string name="tab_notifications">Notifications</string>
@@ -24,7 +22,6 @@
     <string name="tab_friends">Friends</string>
     <string name="tab_near">Near</string>
     <string name="tab_lurk">Lurk</string>
-
-
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

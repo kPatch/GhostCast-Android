@@ -16,8 +16,12 @@
 
 package st.ghostca.ghostcast;
 
+import st.ghostca.ghostcast.common.logger.Log;
 import st.ghostca.ghostcast.common.view.SlidingTabLayout;
 import st.ghostca.ghostcast.fragments.FeedFragment;
+import st.ghostca.ghostcast.fragments.FriendsFragment;
+import st.ghostca.ghostcast.fragments.LurkFragment;
+import st.ghostca.ghostcast.fragments.NotificationsFragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -58,7 +62,6 @@ public class SlidingTabsColorsFragment extends Fragment {
          */
         Fragment createFragment() {
             return ContentFragment.newInstance(mTitle, mIndicatorColor, mDividerColor);
-            //return FeedFragment.newInstance(mTitle.toString(), "");
         }
 
         /**
@@ -128,18 +131,7 @@ public class SlidingTabsColorsFragment extends Fragment {
                 Color.RED, // Indicator color
                 Color.GRAY // Divider color
         ));
-        /*mTabs.add(new SamplePagerItem(
-                getString(R.string.tab_messages), // Title
-                Color.RED, // Indicator color
-                Color.GRAY // Divider color
-        ));
 
-        mTabs.add(new SamplePagerItem(
-                getString(R.string.tab_photos), // Title
-                Color.YELLOW, // Indicator color
-                Color.GRAY // Divider color
-        ));
-        */
         mTabs.add(new SamplePagerItem(
                 getString(R.string.tab_notifications), // Title
                 Color.GREEN, // Indicator color
@@ -226,17 +218,21 @@ public class SlidingTabsColorsFragment extends Fragment {
          */
         @Override
         public Fragment getItem(int i) {
+            Log.d(LOG_TAG, "ID:::::::::: " + i);
             switch(i) {
                 case 0: return FeedFragment.newInstance("Feed", "");
-                //case 0: return mTabs.get(i).createFragment();
-                default: return mTabs.get(i).createFragment();
+                case 1: return LurkFragment.newInstance("Lurk", "");
+                case 2: return FriendsFragment.newInstance("Friends", "");
+                case 3: return NotificationsFragment.newInstance("Notifications", "");
+                default: return NotificationsFragment.newInstance("Notifications", "");
             }
             //return mTabs.get(i).createFragment();
         }
 
         @Override
         public int getCount() {
-            return mTabs.size();
+//            return mTabs.size();
+            return 4;
         }
 
         // BEGIN_INCLUDE (pageradapter_getpagetitle)

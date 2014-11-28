@@ -16,6 +16,7 @@
 
 package st.ghostca.ghostcast;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
@@ -29,6 +30,8 @@ import st.ghostca.ghostcast.common.logger.LogFragment;
 import st.ghostca.ghostcast.common.logger.LogWrapper;
 import st.ghostca.ghostcast.common.logger.MessageOnlyLogFilter;
 import st.ghostca.ghostcast.fragments.FeedFragment;
+import st.ghostca.ghostcast.fragments.FriendsFragment;
+import st.ghostca.ghostcast.fragments.LurkFragment;
 
 /**
  * A simple launcher activity containing a summary sample description, sample log and a custom
@@ -37,7 +40,10 @@ import st.ghostca.ghostcast.fragments.FeedFragment;
  * For devices with displays with a width of 720dp or greater, the sample log is always visible,
  * on other devices it's visibility is controlled by an item on the Action Bar.
  */
-public class MainActivity extends SampleActivityBase implements FeedFragment.OnFragmentInteractionListener {
+public class MainActivity extends SampleActivityBase
+        implements  FeedFragment.OnFragmentInteractionListener,
+                    FriendsFragment.OnFragmentInteractionListener,
+        LurkFragment.OnFragmentInteractionListener{
 
     public static final String TAG = "MainActivity";
 
@@ -109,7 +115,15 @@ public class MainActivity extends SampleActivityBase implements FeedFragment.OnF
         Log.i(TAG, "Ready");
     }
 
-    public void onFragmentInteraction(String id){
+    public void onFeedFragmentInteraction(String id){
         Toast.makeText(getApplicationContext(), "ID: " + id, Toast.LENGTH_SHORT);
+    }
+
+    public void onFriendFragmentInteraction(String id){
+        Toast.makeText(getApplicationContext(), "ID: " + id, Toast.LENGTH_SHORT);
+    }
+
+    @Override
+    public void onLurkFragmentInteraction(Uri uri) {
     }
 }
