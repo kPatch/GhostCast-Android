@@ -21,6 +21,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Toast;
 import android.widget.ViewAnimator;
 
@@ -86,8 +89,22 @@ public class MainActivity extends SampleActivityBase
                 ViewAnimator output = (ViewAnimator) findViewById(R.id.sample_output);
                 if (mLogShown) {
                     output.setDisplayedChild(1);
+
+                    View backgroundMap = findViewById(R.id.background_map);
+                    backgroundMap.setVisibility(View.VISIBLE);
+                    backgroundMap.setAlpha(1);
+
+                    View core = findViewById(R.id.core_fragment);
+                    slideDown(core);
                 } else {
                     output.setDisplayedChild(0);
+
+                    View backgroundMap = findViewById(R.id.background_map);
+                    backgroundMap.setVisibility(View.GONE);
+                    backgroundMap.setAlpha(0);
+
+                    View core = findViewById(R.id.core_fragment);
+                    slideUp(core);
                 }
                 supportInvalidateOptionsMenu();
                 return true;
@@ -125,5 +142,86 @@ public class MainActivity extends SampleActivityBase
 
     @Override
     public void onLurkFragmentInteraction(Uri uri) {
+    }
+
+    //////////////////
+    private Animation.AnimationListener slideDownAnimationListener = new Animation.AnimationListener() {
+        @Override
+        public void onAnimationStart(Animation animation) {
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) {
+        }
+
+        @Override
+        public void onAnimationEnd(Animation animation) {
+            //View view = findViewById(R.id.sample_main_layout);
+            View view = findViewById(R.id.core_fragment);
+            final int left = view.getLeft();
+            final int top = view.getTop();
+            final int right = view.getRight();
+            final int bottom = view.getBottom();
+            //view.layout(left, (int)(top - 0.25 * top), right, (int)(bottom - 0.25 * bottom));
+            view.layout(left, (int)(top + 0.25 * top), right, (int)(bottom + 0.25 * bottom));
+        }
+    };
+
+    private Animation.AnimationListener slideUpAnimationListener = new Animation.AnimationListener() {
+        @Override
+        public void onAnimationStart(Animation animation) {
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) {
+        }
+
+        @Override
+        public void onAnimationEnd(Animation animation) {
+            //View view = findViewById(R.id.sample_main_layout);
+            View view = findViewById(R.id.core_fragment);
+            final int left = view.getLeft();
+            final int top = view.getTop();
+            final int right = view.getRight();
+            final int bottom = view.getBottom();
+            //view.layout(left, (int)(top - 0.25 * top), right, (int)(bottom - 0.25 * bottom));
+            view.layout(left, (int)(top - 0.25 * top), right, (int)(bottom - 0.25 * bottom));
+        }
+    };
+
+    private Animation slideDownAnimation = new TranslateAnimation(
+            Animation.RELATIVE_TO_SELF, 0.0f,
+            Animation.RELATIVE_TO_SELF, 0.0f,
+            //Animation.RELATIVE_TO_SELF, -0.25f,
+            //Animation.RELATIVE_TO_SELF, 0.0f
+            Animation.RELATIVE_TO_SELF, 0.0f,
+            Animation.RELATIVE_TO_SELF, 0.25f
+    );
+
+    private Animation slideUpAnimation = new TranslateAnimation(
+            Animation.RELATIVE_TO_SELF, 0.0f,
+            Animation.RELATIVE_TO_SELF, 0.0f,
+            //Animation.RELATIVE_TO_SELF, -0.25f,
+            //Animation.RELATIVE_TO_SELF, 0.0f
+            Animation.RELATIVE_TO_SELF, 0.25f,
+            Animation.RELATIVE_TO_SELF, 0.0f
+    );
+
+    private void slideDown(final View view) {
+
+        slideDownAnimation.setDuration(1000);
+        slideDownAnimation.setFillAfter(true);
+        slideDownAnimation.setFillEnabled(true);
+        slideDownAnimation.setAnimationListener(slideDownAnimationListener);
+        view.startAnimation(slideDownAnimation);
+    }
+
+    private void slideUp(final View view) {
+
+        slideUpAnimation.setDuration(1000);
+        slideUpAnimation.setFillAfter(true);
+        slideUpAnimation.setFillEnabled(true);
+        slideUpAnimation.setAnimationListener(slideDownAnimationListener);
+        view.startAnimation(slideUpAnimation);
     }
 }
