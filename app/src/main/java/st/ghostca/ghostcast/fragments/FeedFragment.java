@@ -112,10 +112,11 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstance){
-        super.onActivityCreated(savedInstance);
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         // Set the adapter
-        mListView = (AbsListView) getActivity().findViewById(android.R.id.list);
+        mListView = (AbsListView) view.findViewById(android.R.id.list);
         feedItems = new ArrayList<FeedItem>();
         mAdapter = new FeedListAdapter(getActivity(), feedItems);
         //((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
@@ -157,6 +158,12 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
             // Adding request to volley request queue
             AppController.getInstance().addToRequestQueue(jsonReq);
         }
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstance){
+        super.onActivityCreated(savedInstance);
+
     }
 
     @Override
@@ -248,5 +255,4 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
         // TODO: Update argument type and name
         public void onFeedFragmentInteraction(String id);
     }
-
 }

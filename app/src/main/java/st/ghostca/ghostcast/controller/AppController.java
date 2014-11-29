@@ -40,7 +40,7 @@ public class AppController extends Application {
     }
 
     public ImageLoader getImageLoader() {
-        Log.d("APPCONTROLLER::::::::::::::", "getImageLoader()");
+        Log.d("APPCONTROLLER::::::::::::::", "!!!getImageLoader()");
         getRequestQueue();
         if (mImageLoader == null) {
             getLruBitmapCache();

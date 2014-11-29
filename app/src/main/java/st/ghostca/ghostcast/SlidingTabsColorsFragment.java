@@ -15,7 +15,6 @@
  */
 
 package st.ghostca.ghostcast;
-
 import st.ghostca.ghostcast.common.logger.Log;
 import st.ghostca.ghostcast.common.view.SlidingTabLayout;
 import st.ghostca.ghostcast.fragments.FeedFragment;
@@ -57,31 +56,29 @@ public class SlidingTabsColorsFragment extends Fragment {
             mDividerColor = dividerColor;
         }
 
-        /**
-         * @return A new {@link android.support.v4.app.Fragment} to be displayed by a {@link android.support.v4.view.ViewPager}
-         */
         Fragment createFragment() {
-            return ContentFragment.newInstance(mTitle, mIndicatorColor, mDividerColor);
+            if(mTitle.toString().equalsIgnoreCase("Stream"))
+             return FeedFragment.newInstance(mTitle.toString(), "");
+            else if(mTitle.toString().equalsIgnoreCase("Lurk"))
+                return LurkFragment.newInstance(mTitle.toString(), "");
+            else if(mTitle.toString().equalsIgnoreCase("Friends"))
+                return FriendsFragment.newInstance(mTitle.toString(), "");
+            else if(mTitle.toString().equalsIgnoreCase("Notifications"))
+                return NotificationsFragment.newInstance(mTitle.toString(), "");
+            else
+                return null;
+
+            //return ContentFragment.newInstance(mTitle, mIndicatorColor, mDividerColor);
         }
 
-        /**
-         * @return the title which represents this tab. In this sample this is used directly by
-         * {@link android.support.v4.view.PagerAdapter#getPageTitle(int)}
-         */
         CharSequence getTitle() {
             return mTitle;
         }
 
-        /**
-         * @return the color to be used for indicator on the {@link SlidingTabLayout}
-         */
         int getIndicatorColor() {
             return mIndicatorColor;
         }
 
-        /**
-         * @return the color to be used for right divider on the {@link SlidingTabLayout}
-         */
         int getDividerColor() {
             return mDividerColor;
         }
@@ -103,6 +100,7 @@ public class SlidingTabsColorsFragment extends Fragment {
     /**
      * List of {@link st.ghostca.ghostcast.SlidingTabsColorsFragment.SamplePagerItem} which represent this sample's tabs.
      */
+    //private List<SamplePagerItem> mTabs = new ArrayList<SamplePagerItem>();
     private List<SamplePagerItem> mTabs = new ArrayList<SamplePagerItem>();
 
     @Override
@@ -219,20 +217,13 @@ public class SlidingTabsColorsFragment extends Fragment {
         @Override
         public Fragment getItem(int i) {
             Log.d(LOG_TAG, "ID:::::::::: " + i);
-            switch(i) {
-                case 0: return FeedFragment.newInstance("Feed", "");
-                case 1: return LurkFragment.newInstance("Lurk", "");
-                case 2: return FriendsFragment.newInstance("Friends", "");
-                case 3: return NotificationsFragment.newInstance("Notifications", "");
-                default: return NotificationsFragment.newInstance("Notifications", "");
-            }
-            //return mTabs.get(i).createFragment();
+            return mTabs.get(i).createFragment();
         }
 
         @Override
         public int getCount() {
-//            return mTabs.size();
-            return 4;
+            return mTabs.size();
+            //return 4;
         }
 
         // BEGIN_INCLUDE (pageradapter_getpagetitle)

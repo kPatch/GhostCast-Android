@@ -43,7 +43,7 @@ import st.ghostca.ghostcast.fragments.LurkFragment;
 public class MainActivity extends SampleActivityBase
         implements  FeedFragment.OnFragmentInteractionListener,
                     FriendsFragment.OnFragmentInteractionListener,
-        LurkFragment.OnFragmentInteractionListener{
+                    LurkFragment.OnFragmentInteractionListener{
 
     public static final String TAG = "MainActivity";
 
@@ -116,11 +116,11 @@ public class MainActivity extends SampleActivityBase
     }
 
     public void onFeedFragmentInteraction(String id){
-        Toast.makeText(getApplicationContext(), "ID: " + id, Toast.LENGTH_SHORT);
+        Toast.makeText(getApplicationContext(), "ID: " + id, Toast.LENGTH_SHORT).show();
     }
 
     public void onFriendFragmentInteraction(String id){
-        Toast.makeText(getApplicationContext(), "ID: " + id, Toast.LENGTH_SHORT);
+        Toast.makeText(getApplicationContext(), "ID: " + id, Toast.LENGTH_SHORT).show();
     }
 
     @Override
