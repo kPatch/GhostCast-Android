@@ -14,13 +14,10 @@
 
 </FrameLayout>
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="st.ghostca.ghostcast.fragments.FriendsFragment"
-    android:id="@+id/a"
-    android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context="st.ghostca.ghostcast.fragments.FriendsFragment">
 
     <EditText
         android:id="@+id/contactSearch"
@@ -40,6 +37,16 @@
         android:divider="@color/gray_very_light"
         android:dividerHeight="1dp"
         tools:listitem="@layout/friend_item"/>
+        <TextView
+            android:id="@+id/quickReturnBottomTarget"
+            android:text="CHAT TEXT VOICE PHOTOS"
+            android:gravity="center"
+            android:textColor="#efefef"
+            android:textSize="18sp"
+            android:background="#cc0000"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
 <!--
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,4 +77,4 @@
             android:text="Favorites" />
     </LinearLayout>
     -->
-</LinearLayout>
+</FrameLayout>

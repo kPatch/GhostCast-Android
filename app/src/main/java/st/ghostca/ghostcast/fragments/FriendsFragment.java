@@ -1,6 +1,7 @@
 package st.ghostca.ghostcast.fragments;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,8 +10,15 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+
+import com.felipecsl.quickreturn.library.AbsListViewQuickReturnAttacher;
+import com.felipecsl.quickreturn.library.QuickReturnAttacher;
+import com.felipecsl.quickreturn.library.widget.AbsListViewScrollTarget;
+import com.felipecsl.quickreturn.library.widget.QuickReturnAdapter;
+import com.felipecsl.quickreturn.library.widget.QuickReturnTargetView;
 
 import st.ghostca.ghostcast.R;
 
@@ -25,7 +33,13 @@ import st.ghostca.ghostcast.fragments.dummy.DummyContent;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class FriendsFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class FriendsFragment extends Fragment implements AbsListView.OnItemClickListener,
+        AbsListView.OnScrollListener {
+
+    private int offset;
+    private QuickReturnTargetView topTargetView;
+    private TextView topTextView;
+    private TextView bottomTextView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -84,14 +98,42 @@ public class FriendsFragment extends Fragment implements AbsListView.OnItemClick
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_friends, container, false);
 
         // Set the adapter
         mListView = (AbsListView) view.findViewById(android.R.id.list);
-        ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
+        //((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
+        // IRVIN: 1 for one column in the list view
+        ((AdapterView<ListAdapter>) mListView).setAdapter(new QuickReturnAdapter(mAdapter, 1));
 
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
+
+        //////////////////////////////////IRVIN: start
+        offset = 0;
+        final ViewGroup viewGroup = (ViewGroup) view.findViewById(android.R.id.list);
+        bottomTextView = (TextView) view.findViewById(R.id.quickReturnBottomTarget);
+
+/*        if (viewGroup instanceof AbsListView) {
+            int numColumns = (viewGroup instanceof GridView) ? 3 : 1;
+            final AbsListView absListView = (AbsListView) viewGroup;
+            absListView.setAdapter(new QuickReturnAdapter(mAdapter, numColumns));
+        }*/
+
+        final QuickReturnAttacher quickReturnAttacher = QuickReturnAttacher.forView(viewGroup);
+        quickReturnAttacher.addTargetView(bottomTextView, AbsListViewScrollTarget.POSITION_BOTTOM);
+        topTargetView = quickReturnAttacher.addTargetView(topTextView, AbsListViewScrollTarget.POSITION_TOP,
+                dpToPx(getActivity(), 50));
+        if (quickReturnAttacher instanceof AbsListViewQuickReturnAttacher) {
+            // This is the correct way to register an OnScrollListener.
+            // You have to add it on the QuickReturnAttacher, instead
+            // of on the viewGroup directly.
+            final AbsListViewQuickReturnAttacher attacher = (AbsListViewQuickReturnAttacher) quickReturnAttacher;
+            attacher.addOnScrollListener(this);
+            attacher.setOnItemClickListener(this);
+        }
+        /////////////// IRVIN: end
 
         return view;
     }
@@ -149,6 +191,22 @@ public class FriendsFragment extends Fragment implements AbsListView.OnItemClick
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFriendFragmentInteraction(String id);
+    }
+
+    ///////////
+    public static int dpToPx(final Context context, final float dp) {
+        // Took from http://stackoverflow.com/questions/8309354/formula-px-to-dp-dp-to-px-android
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) ((dp * scale) + 0.5f);
+    }
+
+    @Override
+    public void onScrollStateChanged(final AbsListView view, final int scrollState) {
+
+    }
+
+    @Override
+    public void onScroll(final AbsListView view, final int firstVisibleItem, final int visibleItemCount, final int totalItemCount) {
     }
 
 }
