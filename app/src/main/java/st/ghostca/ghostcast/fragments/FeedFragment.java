@@ -117,6 +117,7 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
 
         // Set the adapter
         mListView = (AbsListView) view.findViewById(android.R.id.list);
+        mListView.setOnItemClickListener(this);
         feedItems = new ArrayList<FeedItem>();
         mAdapter = new FeedListAdapter(getActivity(), feedItems);
         //((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);

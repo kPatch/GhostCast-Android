@@ -77,7 +77,8 @@ public class FriendsFragment extends Fragment implements AbsListView.OnItemClick
 
         // TODO: Change Adapter to display your content
         mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+                //android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+                R.layout.friend_item, R.id.contact_first_name, DummyContent.ITEMS);
     }
 
     @Override
