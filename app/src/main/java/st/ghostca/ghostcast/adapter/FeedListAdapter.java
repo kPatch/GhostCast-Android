@@ -18,7 +18,6 @@ import com.android.volley.toolbox.NetworkImageView;
 import java.util.List;
 
 import st.ghostca.ghostcast.R;
-import st.ghostca.ghostcast.common.logger.Log;
 import st.ghostca.ghostcast.controller.AppController;
 import st.ghostca.ghostcast.custom.FeedImageView;
 import st.ghostca.ghostcast.model.FeedItem;
@@ -60,7 +59,7 @@ public class FeedListAdapter extends BaseAdapter {
             inflater = (LayoutInflater) activity
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null)
-            convertView = inflater.inflate(R.layout.feed_item, null);
+            convertView = inflater.inflate(R.layout.feed_item_orig, null);
 
         if (imageLoader == null)
             imageLoader = AppController.getInstance().getImageLoader();

@@ -3,12 +3,16 @@ package st.ghostca.ghostcast.fragments;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Cache;
 import com.android.volley.Request;
@@ -112,7 +116,7 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         // Set the adapter
@@ -159,6 +163,23 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
             // Adding request to volley request queue
             AppController.getInstance().addToRequestQueue(jsonReq);
         }
+
+        EditText editText = (EditText) view.findViewById(R.id.feed_editext);
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_SEND) {
+                    sendMessage(view);
+                    handled = true;
+                }
+                return handled;
+            }
+        });
+    }
+
+    private void sendMessage(View view) {
+        Toast.makeText(view.getContext(), "SEND POST", Toast.LENGTH_LONG);
     }
 
     @Override
