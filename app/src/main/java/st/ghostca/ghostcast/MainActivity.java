@@ -77,7 +77,6 @@ public class MainActivity extends SampleActivityBase
         MenuItem logToggle = menu.findItem(R.id.menu_toggle_log);
         logToggle.setVisible(findViewById(R.id.sample_output) instanceof ViewAnimator);
         logToggle.setTitle(mLogShown ? R.string.sample_hide_log : R.string.sample_show_log);
-
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -93,7 +92,6 @@ public class MainActivity extends SampleActivityBase
                     View backgroundMap = findViewById(R.id.background_map);
                     backgroundMap.setVisibility(View.VISIBLE);
                     backgroundMap.setAlpha(1);
-
                     View core = findViewById(R.id.core_fragment);
                     slideDown(core);
                 } else {
@@ -208,8 +206,7 @@ public class MainActivity extends SampleActivityBase
     );
 
     private void slideDown(final View view) {
-
-        slideDownAnimation.setDuration(1000);
+        slideDownAnimation.setDuration(500);
         slideDownAnimation.setFillAfter(true);
         slideDownAnimation.setFillEnabled(true);
         slideDownAnimation.setAnimationListener(slideDownAnimationListener);
@@ -217,8 +214,7 @@ public class MainActivity extends SampleActivityBase
     }
 
     private void slideUp(final View view) {
-
-        slideUpAnimation.setDuration(1000);
+        slideUpAnimation.setDuration(500);
         slideUpAnimation.setFillAfter(true);
         slideUpAnimation.setFillEnabled(true);
         slideUpAnimation.setAnimationListener(slideDownAnimationListener);
