@@ -17,16 +17,25 @@ import java.util.List;
  */
 public class User {
 
-    private final String NAME = "User";
-    ParseObject userObject;
     private Date timestamp;
     private String username;
     private String password;
-    private ParseUser user;
+    private static ParseUser user;
     private ArrayList<Post> posts;
 
     public User () {
-        userObject = new ParseObject(NAME);
+        user = new ParseUser();
+    }
+
+    //get instance of node
+    public static synchronized ParseUser getInstance() {
+        return user;
+    }
+
+    //override clone method
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        throw new CloneNotSupportedException();
     }
 
     /***********  Getter methods ***************/
@@ -39,28 +48,13 @@ public class User {
         return password;
     }
 
-    public ArrayList<Post> getPosts(String username) {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery(NAME);
-        query.whereEqualTo("username", username);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> scoreList, ParseException e) {
-                if (e == null) {
-                    Log.d("score", "Retrieved " + scoreList.size() + " scores");
-                } else {
-                    Log.d("score", "Error: " + e.getMessage());
-                }
-            }
-        });
-        return null;
-    }
-
     /***********  Setter methods ***************/
     public void setUsername(String username) {
-
+        user.setUsername(username);
     }
-
+    //TODO: Automatically generate and save into datastore file?
     public void setPassword(String password) {
-
+        user.setPassword(password);
     }
 
 
