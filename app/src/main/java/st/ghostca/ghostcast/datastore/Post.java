@@ -21,6 +21,8 @@ public class Post {
     private int likes;
     private Date timestamp;
     private Data data;
+    private int page;
+    ParseQuery<ParseObject> query = ParseQuery.getQuery(NAME);
 
     public Post(ParseObject user) {
         postObject = new ParseObject(NAME);
@@ -30,7 +32,6 @@ public class Post {
 
     /***********  Getter methods ***************/
     public String getPost(String Objectid) {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery(NAME);
         if(Objectid != null) {
             query.getInBackground(Objectid, new GetCallback<ParseObject>() {
                 public void done(ParseObject object, ParseException e) {
@@ -63,7 +64,7 @@ public class Post {
         //this.text= text;
     }
 
-    public void setGeo(double latitude, double longitude) {
+    public void setLocation(double latitude, double longitude) {
         ParseGeoPoint point = new ParseGeoPoint(latitude, longitude);
         postObject.put("location", point);
     }
@@ -74,16 +75,25 @@ public class Post {
         }
     }
 
-    public void fetchAllPosts() {
+    public void fetchAllPosts(int pagination) {
 
+
+        query.setSkip(pagination);
+        query.getFirstInBackground();
     }
 
-    public void fetchUserPosts() {
+    public void fetchUserPosts(int pagination) {
 
+        query.setSkip(pagination);
+        query.getFirstInBackground();
     }
 
     public void remove() {
 
+    }
+
+    public void setPage(int page) {
+        this.page = page;
     }
 
 

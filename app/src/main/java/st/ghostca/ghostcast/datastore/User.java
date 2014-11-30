@@ -57,5 +57,9 @@ public class User {
         user.setPassword(password);
     }
 
+    public void signUp(){
+        user.signUpInBackground();
+    }
+
 
     }

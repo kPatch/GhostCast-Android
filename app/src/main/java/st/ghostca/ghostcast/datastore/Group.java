@@ -22,7 +22,6 @@ public class Group {
 
     public Group() {
         groupObject = new ParseObject(NAME);
-
     }
 
 

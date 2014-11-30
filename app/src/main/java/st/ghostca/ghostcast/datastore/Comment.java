@@ -2,6 +2,7 @@ package st.ghostca.ghostcast.datastore;
 
 import android.graphics.Bitmap;
 
+import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 
 import java.util.Date;
@@ -13,10 +14,7 @@ public class Comment {
 
     private final String NAME = "Comment";
     private ParseObject commentObject;
-    private String username;
     private Data data;
-    private double latitude;
-    private double longitude;
     private int likes;
     private Date timestamp;
 
@@ -30,8 +28,8 @@ public class Comment {
     }
 
     /***********  Getter methods ***************/
-    public void getUsername() {
-
+    public void getUsername(String username) {
+        commentObject.put("username", username);
     }
 
     public Data getData() {
@@ -48,7 +46,10 @@ public class Comment {
         this.data = data;
     }
 
-
+    public void setLocation(double latitude, double longitude) {
+        ParseGeoPoint point = new ParseGeoPoint(latitude, longitude);
+        commentObject.put("location", point);
+    }
 
 
 }
