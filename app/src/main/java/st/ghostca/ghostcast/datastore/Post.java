@@ -21,22 +21,7 @@ public class Post {
     private int likes;
     private Date timestamp;
     private Data data;
-/*
-    // Create the post
-    ParseObject myPost = new ParseObject("Post");
-    myPost.put("title", "I'm Hungry");
-    myPost.put("content", "Where should we go for lunch?");
 
-    // Create the comment
-    ParseObject myComment = new ParseObject("Comment");
-    myComment.put("content", "Let's do Sushirrito.");
-
-// Add a relation between the Post and Comment
-    myComment.put("parent", myPost);
-
-// This will save both myPost and myComment
-    myComment.saveInBackground();
-    */
     public Post(ParseObject user) {
         postObject = new ParseObject(NAME);
         //adding relation
@@ -87,6 +72,18 @@ public class Post {
         synchronized (this) {
             postObject.saveInBackground();
         }
+    }
+
+    public void fetchAllPosts() {
+
+    }
+
+    public void fetchUserPosts() {
+
+    }
+
+    public void remove() {
+
     }
 
 

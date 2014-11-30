@@ -1,5 +1,7 @@
 package st.ghostca.ghostcast.datastore;
 
+import android.graphics.Bitmap;
+
 import com.parse.ParseObject;
 
 import java.util.Date;
@@ -12,9 +14,7 @@ public class Comment {
     private final String NAME = "Comment";
     private ParseObject commentObject;
     private String username;
-    private String text;
-    private String audioPath;
-    private String imagePath;
+    private Data data;
     private double latitude;
     private double longitude;
     private int likes;
@@ -24,21 +24,18 @@ public class Comment {
         commentObject = new ParseObject(NAME);
     }
 
+    public Comment(String text){
+        data = new Data(text);
+        data.Save();
+    }
+
     /***********  Getter methods ***************/
     public void getUsername() {
 
     }
 
-    public void getText() {
-
-    }
-
-    public void getAudio() {
-
-    }
-
-    public void getImage() {
-
+    public Data getData() {
+        return data;
     }
 
     /***********  Setter methods ***************/
@@ -47,17 +44,8 @@ public class Comment {
 
     }
 
-    public void setText() {
-
-    }
-
-    public void setAudio() {
-
-    }
-
-    public void setImage() {
-
-
+    public void setData(Data data) {
+        this.data = data;
     }
 
 
