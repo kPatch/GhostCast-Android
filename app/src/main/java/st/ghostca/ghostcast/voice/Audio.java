@@ -16,7 +16,7 @@ public class Audio {
     private static MediaRecorder myAudioRecorder;
     private static Audio instance;
     private static final String storage_directory = Environment.getExternalStorageDirectory().
-            getAbsolutePath() + "/Audio/";
+            getAbsolutePath() + "/ghostcast/Audio/";
 
     private static void initialize() {
         myAudioRecorder = new MediaRecorder();
