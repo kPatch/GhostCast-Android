@@ -6,8 +6,10 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,8 +19,10 @@ public class User {
 
     private final String NAME = "User";
     ParseObject userObject;
+    private Date timestamp;
     private String username;
     private String password;
+    private ParseUser user;
     private ArrayList<Post> posts;
 
     public User () {

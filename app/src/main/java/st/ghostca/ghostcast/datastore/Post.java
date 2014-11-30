@@ -6,6 +6,8 @@ import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.util.Date;
+
 /**
  * Created by uwe on 11/28/14.
  */
@@ -14,12 +16,11 @@ public class Post {
     private final String NAME = "Post";
     private ParseObject postObject;
     private String username;
-    private String text;
-    private String audioPath;
-    private String imagePath;
     private double latitude;
     private double longitude;
     private int likes;
+    private Date timestamp;
+    private Data data;
 /*
     // Create the post
     ParseObject myPost = new ParseObject("Post");
@@ -59,16 +60,8 @@ public class Post {
         return null;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public String getAudioPath() {
-        return audioPath;
-    }
-
-    public String getImagePath() {
-        return imagePath;
+    public Data getData() {
+        return data;
     }
 
     public String getUsername() {
@@ -80,21 +73,10 @@ public class Post {
         postObject.put("username", username);
         //this.username = username;
     }
-    public void setText(String text) {
-        postObject.put("text", text);
+    public void setData(Data data) {
+        postObject.put("data", data);
         //this.text= text;
     }
-
-    public void setAudioPath(String audioPath) {
-        postObject.put("audioFile", audioPath);
-        //this.audioPath = audioPath;
-    }
-
-    public void setImagePath(String imagePath) {
-        postObject.put("imageFile", imagePath);
-       this.imagePath = imagePath;
-    }
-
 
     public void setGeo(double latitude, double longitude) {
         ParseGeoPoint point = new ParseGeoPoint(latitude, longitude);
