@@ -2,7 +2,9 @@ package st.ghostca.ghostcast.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,33 +49,23 @@ import st.ghostca.ghostcast.model.FeedItem;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class FeedFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class FeedFragment extends Fragment  implements AbsListView.OnItemClickListener
+ {
 
+    SwipeRefreshLayout swipeLayout;
     private static final String TAG = "FEED FRAGMENT";
     private String URL_FEED = "http://api.androidhive.info/feed/feed.json";
     private List<FeedItem> feedItems;
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     private OnFragmentInteractionListener mListener;
-
-    /**
-     * The fragment's ListView/GridView.
-     */
-    private AbsListView mListView;
-
-    /**
-     * The Adapter which will be used to populate the ListView/GridView with
-     * Views.
-     */
-    //private ListAdapter mAdapter;
+    //private AbsListView mListView;
+    private ListView mListView;
     private FeedListAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
@@ -119,9 +112,47 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Set the adapter
-        mListView = (AbsListView) view.findViewById(android.R.id.list);
+        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+                        swipeLayout.setRefreshing(false);
+                    }
+                }, 1000);
+            }
+        });
+        swipeLayout.setEnabled(true);
+        swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+        //mListView = (AbsListView) view.findViewById(android.R.id.list);
+        mListView = (ListView)view.findViewById(R.id.listView);
+//        mListView.setOverScrollMode(SwipeRefreshLayout.OVER_SCROLL_ALWAYS);
+
+        // Used for pullDownRefresh
+/*        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {}
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int topRowVerticalPosition =
+                        (mListView == null || mListView.getChildCount() == 0) ?
+                                0 : mListView.getChildAt(0).getTop();
+
+                Log.d("onSCROLLLLL: ", "top: " + topRowVerticalPosition + " - " + (topRowVerticalPosition >= 0));
+                swipeLayout.setEnabled(topRowVerticalPosition >= 0);
+                //swipeLayout.setEnabled(true);
+                Toast.makeText(getActivity().getApplicationContext(),
+                        "Enabled: " + topRowVerticalPosition, Toast.LENGTH_SHORT);
+            }
+        })*/;
+
         mListView.setOnItemClickListener(this);
+
         feedItems = new ArrayList<FeedItem>();
         mAdapter = new FeedListAdapter(getActivity(), feedItems);
         //((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
@@ -164,18 +195,18 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
             AppController.getInstance().addToRequestQueue(jsonReq);
         }
 
-        EditText editText = (EditText) view.findViewById(R.id.feed_editext);
-        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                boolean handled = false;
-                if (actionId == EditorInfo.IME_ACTION_SEND) {
-                    sendMessage(view);
-                    handled = true;
-                }
-                return handled;
-            }
-        });
+//        EditText editText = (EditText) view.findViewById(R.id.feed_editext);
+//        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                boolean handled = false;
+//                if (actionId == EditorInfo.IME_ACTION_SEND) {
+//                    sendMessage(view);
+//                    handled = true;
+//                }
+//                return handled;
+//            }
+//        });
     }
 
     private void sendMessage(View view) {
@@ -262,6 +293,14 @@ public class FeedFragment extends Fragment implements AbsListView.OnItemClickLis
         }
     }
 
+/*    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                swipeLayout.setRefreshing(false);
+            }
+        }, 3000);
+    }*/
 
     /**
      * This interface must be implemented by activities that contain this

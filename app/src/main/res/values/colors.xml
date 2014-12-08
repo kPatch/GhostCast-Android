@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Android Material Colors -->
+    <color name="material_light_blue">#33B5E5</color>
+    <color name="material_dark_blue">#0099CC</color>
+    <color name="material_light_purple">#AA66CC</color>
+    <color name="material_dark_purple">#9933CC</color>
+    <color name="material_light_green">#99CC00</color>
+    <color name="material_dark_green">#669900</color>
+    <color name="material_light_yellow">#FFBB33</color>
+    <color name="material_dark_yellow">#FF8800</color>
+    <color name="material_light_red">#FF4444</color>
+    <color name="material_dark_red">#CC0000</color>
+
+    <drawable name="material_light_blue">#33B5E5</drawable>
+    <drawable name="material_dark_blue">#0099CC</drawable>
+    <drawable name="material_light_purple">#AA66CC</drawable>
+    <drawable name="material_dark_purple">#9933CC</drawable>
+    <drawable name="material_light_green">#99CC00</drawable>
+    <drawable name="material_dark_green">#669900</drawable>
+    <drawable name="material_light_yellow">#FFBB33</drawable>
+    <drawable name="material_dark_yellow">#FF8800</drawable>
+    <drawable name="material_light_red">#FF4444</drawable>
+    <drawable name="material_dark_red">#CC0000</drawable>
+
     <!-- Basic Colors -->
     <color name="clean_white">#FFFFFF</color>
 

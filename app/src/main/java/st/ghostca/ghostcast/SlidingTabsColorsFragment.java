@@ -23,6 +23,7 @@ import st.ghostca.ghostcast.fragments.LurkFragment;
 import st.ghostca.ghostcast.fragments.NotificationsFragment;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -115,25 +116,25 @@ public class SlidingTabsColorsFragment extends Fragment {
         mTabs.add(new SamplePagerItem(
                 getString(R.string.tab_stream), // Title
                 Color.BLUE, // Indicator color
-                Color.GRAY // Divider color
+                Color.WHITE // Divider color
         ));
 
         mTabs.add(new SamplePagerItem(
                 getString(R.string.tab_lurk), // Title
                 Color.RED, // Indicator color
-                Color.GRAY // Divider color
+                Color.WHITE // Divider color
         ));
 
         mTabs.add(new SamplePagerItem(
                 getString(R.string.tab_friends), // Title
                 Color.RED, // Indicator color
-                Color.GRAY // Divider color
+                Color.WHITE // Divider color
         ));
 
         mTabs.add(new SamplePagerItem(
                 getString(R.string.tab_notifications), // Title
                 Color.GREEN, // Indicator color
-                Color.GRAY // Divider color
+                Color.WHITE // Divider color
         ));
         // END_INCLUDE (populate_tabs)
     }
@@ -172,6 +173,9 @@ public class SlidingTabsColorsFragment extends Fragment {
         // it's PagerAdapter set.
         mSlidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
         mSlidingTabLayout.setViewPager(mViewPager);
+
+        //mSlidingTabLayout.setBackgroundColor(getResources().getColor(R.color.material_light_blue));
+//        mSlidingTabLayout.setBackgroundColor(getResources().getColor(R.color.material_light_green));
 
         // BEGIN_INCLUDE (tab_colorizer)
         // Set a TabColorizer to customize the indicator and divider colors. Here we just retrieve
@@ -223,7 +227,6 @@ public class SlidingTabsColorsFragment extends Fragment {
         @Override
         public int getCount() {
             return mTabs.size();
-            //return 4;
         }
 
         // BEGIN_INCLUDE (pageradapter_getpagetitle)

@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/feed_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="st.ghostca.ghostcast.fragments.FeedFragment">
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:id="@+id/feed_parent"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context="st.ghostca.ghostcast.fragments.FeedFragment">-->
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <!--android:id="@android:id/list"-->
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/theme_red_flat"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_alignParentBottom="true">
+    <!--<LinearLayout-->
+        <!--android:id="@+id/linearLayout1"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/theme_red_flat"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:layout_alignParentBottom="true">-->
 
-        <EditText
-            android:id="@+id/feed_editext"
-            android:hint="Your post"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="#FFFFFF"
-            android:textSize="12pt"
-            android:inputType="text"
-            android:imeOptions="actionSend"/>
-<!--        <Button
-            android:id="@+id/sendButton"
-            android:text="Send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />-->
-
-    </LinearLayout>
+        <!--<EditText-->
+            <!--android:id="@+id/feed_editext"-->
+            <!--android:hint="Your post"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textColor="#FFFFFF"-->
+            <!--android:textSize="12pt"-->
+            <!--android:inputType="text"-->
+            <!--android:imeOptions="actionSend"/>-->
+    <!--</LinearLayout>-->
 <!--    <RelativeLayout android:id="@+id/InnerRelativeLayout"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
@@ -47,4 +48,4 @@
     <TextView android:id="@android:id/empty" android:layout_width="match_parent"
         android:layout_height="match_parent" android:gravity="center" />-->
 
-</RelativeLayout>
+<!--</RelativeLayout>-->

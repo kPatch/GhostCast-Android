@@ -31,5 +31,5 @@ dependencies {
     compile files('libs/Parse-1.7.1.jar')
     compile files('libs/bolts-android-1.1.3.jar')
     //Quick Return
-    compile 'com.felipecsl:quickreturn:1.4.+'
+    compile 'com.felipecsl:quickreturn:1.5.0'
 }

@@ -5,6 +5,7 @@ package st.ghostca.ghostcast.custom;
  */
 
 import android.app.ActionBar;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
@@ -123,7 +124,9 @@ public class CustomActivity extends FragmentActivity implements OnClickListener
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
-        actionBar.setBackgroundDrawable(getResources().getDrawable(theme));
+        //actionBar.setBackgroundDrawable(getResources().getDrawable(theme));
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources()
+                .getColor(R.color.material_dark_green)));
     }
 
     /**

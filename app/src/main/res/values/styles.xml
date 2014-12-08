@@ -86,5 +86,8 @@
     </style>
 
 
-
+    <!--ActionBar Styles-->
+    <style name="actionbar_material_green_dark" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">#669900</item>
+    </style>
 </resources>
